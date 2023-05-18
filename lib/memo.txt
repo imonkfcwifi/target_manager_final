@@ -1,0 +1,28 @@
+ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) =>  ResultListScreen(),
+            ));
+          },
+          child: const Text('Results'),
+        ),
+
+        
+  void _handleSave() {
+    if (_count > 0) {
+      final average = _total / _count;
+      _saveData(_total, _count, average);
+      setState(() {
+        _total = 0;
+        _count = 0;
+      });
+    }
+  }
+
+    Future<void> _saveData(int total, int count, double average) async {
+    final dbHelper = DbHelper();
+    await dbHelper.saveResult(total, count, average);
+  }
+
+  first code in my macbook air
+  this stuff is so amazing
